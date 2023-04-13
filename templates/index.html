@@ -1,0 +1,94 @@
+<!DOCTYPE html lang="en">
+<head>
+  <title>Bedtime Story Generator</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='story_teller.gif') }}"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+  <img src="{{ url_for('static', filename='story_teller.gif') }}" alt="story_teller" class="icon" />
+  <h3>Bedtime Story Generator</h3>
+  <form action="/" method="post" >
+    <input type="text" name="prompt" placeholder="Any topic you like!" required />
+
+    <div class="checkbox-group">
+      <label for="genre">What do you want your kid to learn from the story?:</label>
+      <br>
+      <input type="checkbox" id="genre-Responsibility" name="genre" value="Responsibility">
+      <label for="genre-Responsibility">Responsibility</label>
+      <br>
+      <input type="checkbox" id="genre-Honesty" name="genre" value="Honesty">
+      <label for="genre-sci-fi">Honesty</label>
+      <br>
+      <input type="checkbox" id="genre-Diligence" name="genre" value="Diligence">
+      <label for="genre-Diligence">Diligence</label>
+      <br>
+      <input type="checkbox" id="genre-Caring" name="genre" value="Caring">
+      <label for="genre-Caring">Caring</label>
+      <br>
+      <input type="checkbox" id="genre-Loyalty" name="genre" value="Loyalty">
+      <label for="genre-Loyalty">Loyalty</label>
+      <br>
+      <input type="checkbox" id="genre-Resilience" name="genre" value="Resilience">
+      <label for="genre-Resilience">Resilience</label>
+      <br>
+      <input type="checkbox" id="genre-Independence" name="genre" value="Independence">
+      <label for="genre-Independence">Independence</label>
+      <br>
+      <label for="genre-Other">Other:</label>
+      <input type="text" id="genre-Other" name="genre">
+      <button id="submit-btn" type="submit">Here We Go!!!</button>
+
+      <script>
+        const submitBtn = document.querySelector("#submit-btn");
+        const genreOtherInput = document.querySelector("#genre-Other");
+        
+        submitBtn.addEventListener("click", () => {
+          let genreValue = "";
+          
+          const checkboxes = document.querySelectorAll('input[name="genre"]');
+          for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+              genreValue += checkboxes[i].value + ", ";
+            }
+          }
+          
+          if (genreValue === "") {
+            genreValue = genreOtherInput.value;
+          }
+          
+          console.log(genreValue);
+        });
+      </script>
+    </div>
+    
+
+
+    <!-- <div class="checkbox-group">
+      <input type="checkbox">
+      <label>By selecting this box, you acknowledge that you have accepted our regulations</label>
+      <br>
+      <br>
+    </div>
+    <input type="submit" value="Here we go!!!" />
+  </form> -->
+
+  {% if title %}
+  <h1>{{ title }}</h1>
+  {% endif %}
+  
+  {% if story %}
+  <div class="story">{{ story }}</div>
+  {% endif %}
+
+  <br>
+  <h4>"Together with the story, you will also be provided with an interesting fact~"</h4>
+  
+  {% if history_fact %}
+  <div class="story">{{ history_fact }}</div>
+  {% endif %}
+
+</body>
