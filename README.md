@@ -11,3 +11,5 @@
 5. Run the app:
 
    $ flask run
+
+6. Link to the flask interface with the url shown in terminal.
