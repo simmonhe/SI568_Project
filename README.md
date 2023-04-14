@@ -7,3 +7,7 @@
 3. Create a new virtual environment with the requirements.txt.
 
 4. Get your API key.
+
+5. Run the app:
+
+   $ flask run
