@@ -4,4 +4,6 @@
 
 2. Enter the directory.
 
+3. Create a new virtual environment with the requirements.txt:
+
 
